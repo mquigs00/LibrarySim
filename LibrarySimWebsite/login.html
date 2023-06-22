@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <div id="header"></div>
+    </header>
+
+    <main>
+      <h1>Whispering Pines Library Accounts</h1>
+
+      <section>
+        <h2>Already a Member?</h2>
+        <form>
+          <legend>Login</legend>
+
+          <div>
+            <label for="username">Username:</label>
+            <input id="username" type="text" required />
+          </div>
+
+          <div>
+            <label for="password">Password:</label>
+            <input id="password" type="text" required />
+          </div>
+
+          <button type="submit">Login</button>
+          <button type="reset">Clear</button>
+        </form>
+      </section>
+
+      <section>
+        <h2 id="section-register">Looking to Join?</h2>
+
+        <form>
+          <legend>Register</legend>
+          <div>
+            <label for="first_name">First Name:</label>
+            <input id="first_name" type="text" required maxlength="15" />
+          </div>
+
+          <div>
+            <label for="last_name">Last Name:</label>
+            <input id="last_name" type="text" required maxlength="15" />
+          </div>
+
+          <div>
+            <label for="birthday">Day of Birth:</label>
+            <input id="birthday" type="date" required />
+          </div>
+
+          <div>
+            <label for="address">Street Address:</label>
+            <input id="address" type="text" required maxlength="25" />
+          </div>
+
+          <div>
+            <label for="city">Username:</label>
+            <input id="city" type="text" required maxlength="15" />
+          </div>
+
+          <div>
+            <label for="state">State:</label>
+            <input id="state" type="text" required maxlength="2" />
+          </div>
+
+          <div>
+            <label for="zipcode">Zipcode:</label>
+            <input
+              id="zipcode"
+              type="number"
+              required
+              minlength="5"
+              maxlength="5"
+            />
+          </div>
+
+          <div>
+            <label for="username">Username:</label>
+            <input id="username" type="text" required maxlength="15" />
+          </div>
+
+          <div>
+            <label for="password">Password:</label>
+            <input id="password" type="text" required maxlength="15" />
+          </div>
+
+          <div>
+            <label for="password_conf">Confirm Password:</label>
+            <input id="password_conf" type="text" required maxlength="15" />
+          </div>
+
+          <button type="submit">Register</button>
+          <button type="reset">Clear</button>
+        </form>
+      </section>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

@@ -11,6 +11,18 @@
       content="Public library in Havenbrook, Connecticut."
     />
 
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+      });
+    </script>
+
     <style>
       h1 {
         margin-left: 150px;
@@ -19,23 +31,7 @@
   </head>
   <body>
     <header>
-      <div class="top_contact_bar">
-        125 Evergreen Lane Havenbrook, CT 12345 Tel: 123-456-7890
-      </div>
-      <img
-        class="logo"
-        src="images/WP_Logo.png"
-        alt="The logo of Whispering Pines library"
-      />
-
-      <div class="navigation_bar">
-        <div class="navigation_option">My Account</div>
-        <div class="navigation_option">Services</div>
-        <div class="navigation_option">ELibrary</div>
-        <div class="navigation_option">News & Events</div>
-        <div class="navigation_option">About Us</div>
-        <div class="navigation_option">Contact Us</div>
-      </div>
+      <div id="header"></div>
     </header>
 
     <main>
