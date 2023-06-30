@@ -3,7 +3,7 @@
     background-color: darkgreen;
     color: antiquewhite;
     height: 40px;
-    text-align: right;;
+    text-align: center;
 }
 
 .navigation_bar {
@@ -28,11 +28,12 @@
 
 .header_login_section {
     display: flex;
+    height: 80px;
 }
 
 .header_login_bars {
     float: right;
-    vertical-align: middle;
+    display: flex;
 }
 
 /* Misc. */
@@ -52,8 +53,17 @@ form {
     margin-left: 30px;
 }
 
+label {
+    display: inline-block;
+    clear: left;
+    width: 150px;
+    text-align: right;
+    margin-right: 2px;
+}
+
 input {
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 button {
@@ -78,5 +88,18 @@ button {
 }
 
 /* Footer */
+.column {
+    float: left;
+    width: 33.33%;
+}
 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
+footer {
+    position: relative;
+    bottom: 0px;
+}
