@@ -23,9 +23,24 @@
       });
     </script>
 
+    <script>
+      $(function () {
+        $("#footer").load("footer.html");
+      });
+    </script>
+
     <style>
+      main {
+        height: 80rem;
+      }
+
       h1 {
-        margin-left: 150px;
+        margin-left: 15rem;
+      }
+
+      p {
+        margin-left: 15rem;
+        width: 68rem;
       }
     </style>
   </head>
@@ -35,6 +50,7 @@
     </header>
 
     <main>
+      <div class="home_search_catalog">Search Our Catalog</div>
       <h1>Welcome to Whispering Pines Library</h1>
       <img
         class="library_photo"
@@ -47,51 +63,19 @@
         in quiet contemplation, and embark on a journey of discovery within our
         enchanting walls.
       </p>
+
+      <p>
+        Whispering Pines Library, established in the late 18th century by
+        reclusive scholar Ambrose Hawthorne, has captivated seekers of knowledge
+        for generations. With its extraordinary collection of rare books and a
+        mystical aura, the library has evolved from a humble cabin to a grand
+        Victorian-style building, becoming a cherished symbol of intellectual
+        exploration in Havenbrook.
+      </p>
     </main>
 
     <footer>
-      <div class="row">
-        <div class="column">
-          <h2>Whispering Pines Library</h2>
-
-          <p>
-            Whispering Pines Library, established in the late 18th century by
-            reclusive scholar Ambrose Hawthorne, has captivated seekers of
-            knowledge for generations. With its extraordinary collection of rare
-            books and a mystical aura, the library has evolved from a humble
-            cabin to a grand Victorian-style building, becoming a cherished
-            symbol of intellectual exploration in Havenbrook.
-          </p>
-        </div>
-
-        <div class="column">
-          <h2>Contact Us</h2>
-        </div>
-        <div class="column">
-          <h2>Hours</h2>
-          <ul>
-            Monday: 9AM-7pm
-          </ul>
-          <ul>
-            Tuesday: 9AM-7pm
-          </ul>
-          <ul>
-            Wednesday: 9AM-7pm
-          </ul>
-          <ul>
-            Thursday: 9AM-7pm
-          </ul>
-          <ul>
-            Friday: 9AM-4pm
-          </ul>
-          <ul>
-            Monday: 9AM-4pm
-          </ul>
-          <ul>
-            Sunday: Closed
-          </ul>
-        </div>
-      </div>
+      <div id="footer"></div>
     </footer>
   </body>
 </html>
