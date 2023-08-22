@@ -129,14 +129,71 @@ ul {
     width: 42rem;
     height: 41rem;
     float:right;
-    left: 42.5rem;
-    top: 10rem;
+    right: 18rem;
+    bottom: 20rem;
 }
 
 .carousel {
     position: relative;
     width: 95rem;
     height: 23.6rem;
+    left: 7rem;
+}
+
+.carousel_button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 3.25rem;
+    width: 4rem;
+    cursor: pointer;
+}
+
+.carousel_button--left {
+    left: -5.5rem;
+}
+
+.carousel_button--right {
+    right: -5.5rem;
+}
+
+.carousel_track-container {
+    background: aqua;
+    height: 100%;
+    padding: 10px;
+    position: relative;
+}
+
+.carousel_track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.carousel_slide {
+    position: absolute;
+    width: 100%;
+}
+
+.carousel_trackers {
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+}
+
+.carousel_tracker {
+    position: relative;
+    border: 0;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background: lightgrey;
+    margin: 0 1rem;
+    top: 0.5rem;
+}
+
+.carousel_tracker.current-slide {
+    background: grey;
 }
 
 .book_cover {
