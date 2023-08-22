@@ -103,25 +103,47 @@ ul {
 
 /* Home Page Main */
 
+.library_intro_text {
+    width: 70rem;
+    position: relative;
+    left: 10rem;
+    top: 2rem;
+}
+
 .home_search_catalog {
     height: 22rem;
     width: 43rem;
     font-size: 2.4rem;
-    margin-top: 4rem;
+    margin-top: 0rem;
     margin-right: 18rem;
+    position: relative;
+    bottom: 20rem;
     float: right;
-    background-color: grey;
+    background-color: #D2CFCF;
     text-align: center;
-    color: white
+    color: black;
 }
 
 .library_photo {
+    position: relative;
     width: 42rem;
     height: 41rem;
     float:right;
-    margin-right: 9rem;
-    transform: translate(0, 60%);
+    left: 42.5rem;
+    top: 10rem;
 }
+
+.carousel {
+    position: relative;
+    width: 95rem;
+    height: 23.6rem;
+}
+
+.book_cover {
+    width: 12.2rem;
+    height: 19.4rem;
+}
+
 
 /* Calendar Main */
 .date_table {
@@ -138,7 +160,7 @@ footer {
     color: white;
 }
 
-.column {
+.footer_box {
     float: left;
     width: 33.33%;
     height: 28rem;
