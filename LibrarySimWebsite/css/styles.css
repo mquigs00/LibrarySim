@@ -161,6 +161,7 @@ main {
 
 .carousel_button--left {
     left: -5.5rem;
+    visibility: hidden;
 }
 
 .carousel_button--right {
@@ -189,14 +190,14 @@ main {
     margin-right: 0rem;
 }
 
-.carousel_trackers {
+.carousel_nav {
     position: relative;
     left: 12.5%;
     height: 3rem;
     width:17rem;
 }
 
-.carousel_tracker {
+.carousel_dot {
     position: relative;
     border: 0;
     border-radius: 50%;
@@ -205,9 +206,10 @@ main {
     background: lightgrey;
     margin: 0 1rem;
     top: 0.5rem;
+    cursor: pointer;
 }
 
-.carousel_tracker.current-tracker {
+.carousel_dot.current-dot {
     background: grey;
 }
 
@@ -248,15 +250,6 @@ footer {
     width: 33.33%;
     height: 28rem;
 }
-
-/*
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-*/
-
 
 .footer_text_box {
     font-size: 2.4rem;
