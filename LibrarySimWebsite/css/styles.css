@@ -59,12 +59,10 @@ header {
 
 /* Misc. */
 p {
-    margin-left: 3rem;
     font-size: 1.6rem;
 }
 
 h1 {
-    margin-left: 3rem;
     font-size: 3.6rem;
 }
 
@@ -103,11 +101,15 @@ ul {
 
 /* Home Page Main */
 
+main {
+    height: 85rem;
+}
+
 .library_intro_text {
     width: 70rem;
     position: relative;
-    left: 10rem;
-    top: 2rem;
+    left: 20rem;
+    top: 4rem;
 }
 
 .home_search_catalog {
@@ -133,12 +135,17 @@ ul {
     bottom: 20rem;
 }
 
+.new_arrivals {
+    position: relative;
+    top: 10rem;
+}
+
 .carousel {
     position: relative;
     width: 273rem;
     height: 23.6rem;
-    top: 10rem;
-    left: 15rem;
+    top: 2rem;
+    left: 23rem;
 }
 
 .carousel_button {
@@ -200,7 +207,7 @@ ul {
     top: 0.5rem;
 }
 
-.carousel_tracker.current-slide {
+.carousel_tracker.current-tracker {
     background: grey;
 }
 
@@ -228,17 +235,28 @@ footer {
     color: white;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    left: 25rem;
+    height: 100%;
+}
+
 .footer_box {
-    float: left;
     width: 33.33%;
     height: 28rem;
 }
 
+/*
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
+*/
+
 
 .footer_text_box {
     font-size: 2.4rem;
