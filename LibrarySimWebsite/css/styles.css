@@ -2,12 +2,11 @@ html {
     font-size: 62.5%;
 }
 
+/*Header*/
+
 header {
     height: 17rem;
 }
-
-
-/*Header*/
 
 .top_contact_bar {
     background-color: darkgreen;
@@ -34,11 +33,21 @@ header {
     font-size: 1.5rem;
 }
 
+.header_login_label {
+    display: inline-block;
+    clear: left;
+    width: 7rem;
+    margin-right: 0.2rem;
+    margin-left: 5rem;
+}
+
 .header_login_bars {
-    height: 2.5rem;
+    height: 3rem;
     float: right;
     display: flex;
     transform: translate(0, 90%);
+    position: relative;
+    left: 40rem;
 }
 
 .navigation_bar {
@@ -57,47 +66,6 @@ header {
     font-size: 2rem;
 }
 
-/* Misc. */
-p {
-    font-size: 1.6rem;
-}
-
-h1 {
-    font-size: 3.6rem;
-}
-
-h2 {
-    margin-left: 3rem;
-}
-
-form {
-    margin-left: 3rem;
-}
-
-label {
-    display: inline-block;
-    clear: left;
-    width: 15rem;
-    text-align: right;
-    margin-right: 0.2rem;
-}
-
-input {
-    margin-bottom: 1rem;
-    display: inline-block;
-}
-
-button {
-    margin-right: 1rem;
-}
-
-ul {
-    font-size: 2rem;
-    text-align: center;
-    list-style-type: none;
-}
-
-
 
 /* Home Page Main */
 
@@ -113,7 +81,7 @@ main {
 }
 
 .home_search_catalog {
-    height: 22rem;
+    height: 25rem;
     width: 43rem;
     font-size: 2.4rem;
     margin-top: 0rem;
@@ -138,6 +106,8 @@ main {
 .new_arrivals {
     position: relative;
     top: 10rem;
+    height: 35rem;
+    overflow: hidden;
 }
 
 .carousel {
@@ -229,6 +199,11 @@ main {
     grid-template-columns: repeat(7, 100px);
 }
 
+/* Catalog Main */
+.catalog_search {
+    font-size: 2rem;
+}
+
 /* Footer */
 
 footer {
@@ -254,4 +229,39 @@ footer {
 .footer_text_box {
     font-size: 2.4rem;
     text-align: center;
+}
+
+.footer_email_signup {
+    font-size: 2rem;
+}
+
+
+/* Misc. */
+p {
+    font-size: 1.6rem;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+h2 {
+    margin-top: 1rem;
+    font-size: 3.2rem;
+}
+
+input {
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+button {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+ul {
+    font-size: 2rem;
+    text-align: center;
+    list-style-type: none;
 }

@@ -66,10 +66,41 @@
       </section>
         
 
-      <div class="home_search_catalog">Search Our Catalog</div>
+      <section class="home_search_catalog">
+        <h2>Search Our Catalog</h2>
+        <form class="catalog_search">
+          <div>
+            <label for="title">Title:</label>
+            <input id="title" type="text" />
+          </div>
+  
+          <div>
+            <label for="author">Author:</label>
+            <input id="author" type="text" />
+          </div>
+  
+          <div>
+            <label for="genre">Genre:</label>
+            <input id="genre" type="text" list="genres" />
+            <datalist id="genres">
+              <option>Adventure</option>
+              <option>Mystery</option>
+              <option>Fantasy</option>
+              <option>Historical Fiction</option>
+              <option>Horror</option>
+              <option>Romance</option>
+              <option>Science Fiction</option>
+              <option>Biography</option>
+            </datalist>
+          </div>
+  
+          <button type="submit">Search</button>
+          <button type="reset">Clear</button>
+        </form>
+      </section>
 
       <section class="new_arrivals">
-        <h1>Newest Arrivals</h1>
+        <h2>Newest Arrivals</h2>
         <div class="carousel">
           <button class="carousel_button carousel_button--left">&#8678</button>
           <div class="carousel_track-container">
