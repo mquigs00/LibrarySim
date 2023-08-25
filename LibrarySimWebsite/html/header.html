@@ -6,11 +6,13 @@
   </div>
 
   <div class="header_login_section">
-    <img
-      class="logo"
-      src="../images/WP_Logo.png"
-      alt="The logo of Whispering Pines library"
-    />
+    <a href="./home-page.html">
+      <img
+        class="logo"
+        src="../images/WP_Logo.png"
+        alt="The logo of Whispering Pines library"
+      />
+    </a>
 
     <div class="header_login_bars">
       <form>
@@ -31,24 +33,51 @@
 
   <nav class="navigation_bar">
     <ul class="nav_list_primary">
-      <li class="nav_option"><a href="#">My Account</a></li>
-      <li class="nav_option">
-        <h2>Services</h2>
-        <ul class="nav_list_secondary">
-          <li class="nav_option"><a href="#">Get a Card</a></li>
-          <li class="nav_option"><a href="#">Technology</a></li>
+      <li class="nav_option nav_option--child">
+        <a href="./my-account.html">My Account</a>
+      </li>
+      <li>
+        <button
+          class="nav_option nav_option--parent collapsible collapsible--expanded"
+        >
+          Services
+        </button>
+        <span class="collapsible_chevron">&#8250;</span>
+        <ul class="nav_list_secondary collapsible_content">
+          <li class="nav_option nav_option--child">
+            <a href="./login.html">Get a Card</a>
+          </li>
+          <li class="nav_option nav_option-child">
+            <a href="./technology-in-library.html">Technology</a>
+          </li>
         </ul>
       </li>
-      <li class="nav_option"><a href="#">eLibrary</a></li>
-      <li class="nav_option"><a href="#">News & Events</a></li>
-      <li class="nav_option">
-        <a href="#">About Us</a>
-        <ul class="nav_list_secondary">
-          <li class="nav_option"><a href="#">Our History</a></li>
-          <li class="nav_option"><a href="#">Policies</a></li>
+      <li class="nav_option nav_option--child">
+        <a href="./search-items.html">Search Books</a>
+      </li>
+      <li class="nav_option nav_option--child">
+        <a href="./calendar.html">News & Events</a>
+      </li>
+      <li>
+        <button
+          class="nav_option nav_option--parent collapsible collapsible--expanded"
+        >
+          About Us
+        </button>
+        <span class="collapsible_chevron">&#8250;</span>
+        <ul class="nav_list_secondary collapsible_content">
+          <li class="nav_option nav_option--child">
+            <a href="./about-us.html">Our History</a>
+          </li>
+          <li class="nav_option nav_option--child">
+            <a href="./policies.html">Policies</a>
+          </li>
         </ul>
       </li>
-      <li class="nav_option"><a href="#">Contact Us</a></li>
+      <li class="nav_option nav_option--child">
+        <a href="./contact-us.html">Contact Us</a>
+      </li>
     </ul>
   </nav>
+  <script src="js/collapsible.js"></script>
 </header>

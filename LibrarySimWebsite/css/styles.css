@@ -15,69 +15,90 @@ header {
 
 .top_contact_bar_text {
     color: white;
-    top: 50%;
-    text-align: center;
     font-size: 1.5rem;
+    text-align: center;
+    top: 50%;
     transform: translate(0, 50%);
 }
 
 .logo {
-    height: 8rem;
     border-radius: 1rem;
+    height: 8rem;
     margin-left: 20rem;
 }
 
 .header_login_section {
     display: flex;
-    height: 8rem;
     font-size: 1.5rem;
+    height: 8rem;
 }
 
 .header_login_label {
-    display: inline-block;
     clear: left;
-    width: 7rem;
-    margin-right: 0.2rem;
+    display: inline-block;
     margin-left: 5rem;
+    margin-right: 0.2rem;
+    width: 7rem;
 }
 
 .header_login_bars {
-    height: 3rem;
-    float: right;
     display: flex;
-    transform: translate(0, 90%);
-    position: relative;
+    float: right;
+    height: 3rem;
     left: 40rem;
+    position: relative;
+    transform: translate(0, 90%);
 }
 
 .navigation_bar {
     background-color: black;
-    height: 5rem;
     color: white;
+    height: 5rem;
 }
 
 .nav_list_primary {
-    width: 100rem;
-    list-style-type: none;
-    font-size: 2rem;
     display: flex;
+    font-size: 2rem;
     justify-content: space-evenly;
-    transform: translateX(50%);
+    list-style-type: none;
     padding-left: 0;
+    transform: translateX(50%);
+    width: 100rem;
 }
 
 .nav_list_secondary {
-    list-style-type: none;
     font-size: 2rem;
+    list-style-type: none;
     padding-left: 0;
 }
 
 .nav_option {
-    width: 14srem;
+    color: white;
+    font-size: 2rem;
     height: 5rem;
     margin: 1rem;
     text-align: center;
+    width: 14rem;
+}
+
+.nav_option--parent {
+    background: black;
+    border: none;
+    cursor: pointer;
     font-size: 2rem;
+    height: 5rem;
+    margin: 0;
+    margin: 1rem;
+    text-align: center;
+    width: 14rem;
+}
+
+.nav_option--child {
+    font-size: 2rem;
+    height: 5rem;
+    margin: 1rem;
+    text-align: center;
+    width: 14rem;
 }
 
 .nav_option > a {
@@ -104,58 +125,59 @@ main {
 }
 
 .library_intro_text {
-    width: 70rem;
-    position: relative;
     left: 20rem;
+    position: relative;
     top: 4rem;
+    width: 70rem;
 }
 
 .home_search_catalog {
-    height: 25rem;
-    width: 43rem;
-    font-size: 2.4rem;
-    margin-top: 0rem;
-    margin-right: 18rem;
-    position: relative;
-    bottom: 20rem;
-    float: right;
     background-color: #D2CFCF;
-    text-align: center;
+    bottom: 20rem;
     color: black;
+    float: right;
+    font-size: 2.4rem;
+    height: 25rem;
+    margin-right: 18rem;
+    margin-top: 0rem;
+    position: relative;
+    text-align: center;
+    width: 43rem;
 }
 
 .library_photo {
-    position: relative;
-    width: 42rem;
-    height: 41rem;
-    float:right;
-    right: 18rem;
     bottom: 20rem;
+    float:right;
+    height: 41rem;
+    position: relative;
+    right: 18rem;
+    width: 42rem;
 }
 
 .new_arrivals {
-    position: relative;
-    top: 10rem;
     height: 35rem;
     overflow: hidden;
+    position: relative;
+    text-align: center;
+    top: 10rem;
 }
 
 .carousel {
-    position: relative;
-    width: 273rem;
     height: 23.6rem;
-    top: 2rem;
     left: 23rem;
+    position: relative;
+    top: 2rem;
+    width: 273rem;
 }
 
 .carousel_button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 5rem;
     background: transparent;
     border: 0;
     cursor: pointer;
+    font-size: 5rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 1;
 }
 
@@ -170,43 +192,43 @@ main {
 
 .carousel_track-container {
     height: 19.4rem;
-    width: 84rem;
+    overflow: hidden;
     padding: 10px;
     position: relative;
-    overflow: hidden;
+    width: 84rem;
 }
 
 .carousel_track {
-    padding: 0;
-    margin: 0;
     list-style: none;
+    margin: 0;
+    padding: 0;
     transition: transform 500ms ease-in;
 }
 
 .carousel_slide {
-    position: absolute;
-    width: 86rem;
     height: 19.4rem;
     margin-right: 0rem;
+    position: absolute;
+    width: 86rem;
 }
 
 .carousel_nav {
-    position: relative;
-    left: 12.5%;
     height: 3rem;
+    left: 12.5%;
+    position: relative;
     width:17rem;
 }
 
 .carousel_dot {
-    position: relative;
-    border: 0;
-    border-radius: 50%;
-    width: 2rem;
-    height: 2rem;
     background: lightgrey;
-    margin: 0 1rem;
-    top: 0.5rem;
+    border-radius: 50%;
+    border: 0;
     cursor: pointer;
+    height: 2rem;
+    margin: 0 1rem;
+    position: relative;
+    top: 0.5rem;
+    width: 2rem;
 }
 
 .carousel_dot.current-dot {
@@ -214,11 +236,11 @@ main {
 }
 
 .book_cover {
-    width: 12.2rem;
+    float: left;
     height: 19.4rem;
     margin-right: 2rem;
     position:relative;
-    float: left;
+    width: 12.2rem;
 }
 
 
@@ -238,28 +260,28 @@ main {
 /* Footer */
 
 footer {
-    height: 28rem;
     background-color: #C5A06A;
     color: white;
+    height: 28rem;
 }
 
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    position: relative;
-    left: 25rem;
     height: 100%;
+    justify-content: center;
+    left: 25rem;
+    position: relative;
 }
 
 .footer_box {
-    width: 33.33%;
     height: 28rem;
+    text-align: center;
+    width: 33.33%;
 }
 
 .footer_text_box {
     font-size: 2.4rem;
-    text-align: center;
 }
 
 .footer_email_signup {
@@ -268,8 +290,8 @@ footer {
 
 .hours_list {
     font-size: 2rem;
-    text-align: center;
     list-style-type: none;
+    text-align: center;
 }
 
 
@@ -283,18 +305,19 @@ h1 {
 }
 
 h2 {
-    margin-top: 1rem;
     font-size: 3.2rem;
+    margin-top: 1rem;
+    width: 100%;
 }
 
 input {
-    margin-bottom: 1rem;
     display: inline-block;
+    margin-bottom: 1rem;
 }
 
 button {
-    margin-right: 1rem;
     margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .list {
@@ -302,6 +325,18 @@ button {
     padding-left: 0;;
 }
 
-.collapsible {
+.collapsible_content {
+    display: none;
+}
 
+.collapsible_chevron {
+    transform: rotate(180deg);
+}
+
+.collapsible--expanded {
+    transform: rotate(0);
+}
+
+.collapsible--expanded .collapsible_content {
+    display: block;
 }
