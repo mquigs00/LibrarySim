@@ -54,16 +54,46 @@ header {
     background-color: black;
     height: 5rem;
     color: white;
-    display:flex;
-    justify-content: center;
 }
 
-.navigation_option {
-    width: 14rem;
+.nav_list_primary {
+    width: 100rem;
+    list-style-type: none;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    transform: translateX(50%);
+    padding-left: 0;
+}
+
+.nav_list_secondary {
+    list-style-type: none;
+    font-size: 2rem;
+    padding-left: 0;
+}
+
+.nav_option {
+    width: 14srem;
     height: 5rem;
     margin: 1rem;
     text-align: center;
     font-size: 2rem;
+}
+
+.nav_option > a {
+    color: lightgrey;
+    text-decoration: none;
+    transition: color .3s;
+}
+
+.nav_option > h2 {
+    color: lightgrey;
+    cursor: pointer;
+}
+
+.nav_option > a:hover {
+    color: white;
+    transition: color .3s;
 }
 
 
@@ -200,8 +230,9 @@ main {
 }
 
 /* Catalog Main */
-.catalog_search {
+.data_entry {
     font-size: 2rem;
+    padding-left: 3rem;
 }
 
 /* Footer */
@@ -235,6 +266,12 @@ footer {
     font-size: 2rem;
 }
 
+.hours_list {
+    font-size: 2rem;
+    text-align: center;
+    list-style-type: none;
+}
+
 
 /* Misc. */
 p {
@@ -260,8 +297,11 @@ button {
     margin-left: 1rem;
 }
 
-ul {
-    font-size: 2rem;
-    text-align: center;
-    list-style-type: none;
+.list {
+    list-style: none;
+    padding-left: 0;;
+}
+
+.collapsible {
+
 }

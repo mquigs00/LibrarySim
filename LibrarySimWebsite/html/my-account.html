@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interlibrary Loan</title>
-    <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>My Account</title>
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <meta
+      name="description"
+      content="Personal library account of Whispering Pines member."
+    />
 
     <script
       src="https://code.jquery.com/jquery-3.7.0.min.js"
@@ -18,10 +22,20 @@
         $("#header").load("header.html");
       });
     </script>
+
+    <script>
+      $(function () {
+        $("#footer").load("footer.html");
+      });
+    </script>
   </head>
   <body>
     <header>
       <div id="header"></div>
     </header>
+    <main></main>
+    <footer>
+      <div id="footer"></div>
+    </footer>
   </body>
 </html>
