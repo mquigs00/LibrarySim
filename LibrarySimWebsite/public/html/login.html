@@ -56,36 +56,54 @@
       <section>
         <h2 id="section-register">Looking to Join?</h2>
 
-        <form class="data_entry">
+        <form action="/register" method="POST" class="data_entry">
           <legend>Register</legend>
           <div>
             <label for="first_name">First Name:</label>
-            <input id="first_name" type="text" required maxlength="15" />
+            <input
+              id="first_name"
+              type="text"
+              name="first_name"
+              required
+              maxlength="15"
+            />
           </div>
 
           <div>
             <label for="last_name">Last Name:</label>
-            <input id="last_name" type="text" required maxlength="15" />
+            <input
+              id="last_name"
+              type="text"
+              name="last_name"
+              required
+              maxlength="15"
+            />
           </div>
 
           <div>
             <label for="birthday">Day of Birth:</label>
-            <input id="birthday" type="date" required />
+            <input id="birthday" type="date" name="birthday" required />
           </div>
 
           <div>
             <label for="address">Street Address:</label>
-            <input id="address" type="text" required maxlength="25" />
+            <input
+              id="address"
+              type="text"
+              name="address"
+              required
+              maxlength="25"
+            />
           </div>
 
           <div>
-            <label for="city">Username:</label>
-            <input id="city" type="text" required maxlength="15" />
+            <label for="city">City:</label>
+            <input id="city" type="text" name="city" required maxlength="15" />
           </div>
 
           <div>
             <label for="state">State:</label>
-            <input id="state" type="text" required maxlength="2" />
+            <input id="state" type="text" id="state" required maxlength="2" />
           </div>
 
           <div>
@@ -93,6 +111,7 @@
             <input
               id="zipcode"
               type="number"
+              name="zipcode"
               required
               minlength="5"
               maxlength="5"
@@ -101,17 +120,35 @@
 
           <div>
             <label for="username">Username:</label>
-            <input id="username" type="text" required maxlength="15" />
+            <input
+              id="username"
+              type="text"
+              name="username"
+              required
+              maxlength="15"
+            />
           </div>
 
           <div>
             <label for="password">Password:</label>
-            <input id="password" type="text" required maxlength="15" />
+            <input
+              id="password"
+              type="text"
+              name="password"
+              required
+              maxlength="15"
+            />
           </div>
 
           <div>
             <label for="password_conf">Confirm Password:</label>
-            <input id="password_conf" type="text" required maxlength="15" />
+            <input
+              id="password_conf"
+              type="text"
+              name="password_conf"
+              required
+              maxlength="15"
+            />
           </div>
 
           <button type="submit">Register</button>
