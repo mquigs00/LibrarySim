@@ -1,12 +1,102 @@
 const path = require('path');
 const connection = require('./database')
 const express = require('express');
+const { log } = require('console');
 const router = express.Router();
+
+/**
+ * Check how many instances of the given username appear in the users database
+ * 
+ * @param {VARCHAR} username 
+ * @return {int} the number of appearances of the username
+ */
+function numUsernameAppearances(username) {
+    let usernameExists = 'SELECT COUNT(Username) FROM users WHERE Username=?';
+
+    return new Promise((resolve, reject) => {
+        connection.query(usernameExists, [username], (err, result) => {
+            if(err) reject(err);
+            let numAppearances = result[0]["COUNT(Username)"];
+            console.log('Num username appearances = ' + numAppearances);
+            resolve(numAppearances);
+        });
+    });
+}
+
+/**
+ * Check how many instances of the given password appear in the user database
+ * 
+ * @param {VARCHAR} password
+ * @returns {int} the number of appearances of the password
+ */
+function numPasswordAppearances(password) {
+    let passwordExists = 'SELECT COUNT(Password) FROM users WHERE Password=?';
+
+    return new Promise((resolve, reject) => {
+        connection.query(passwordExists, [password], (err, result) => {
+            if(err) reject(err);
+            let numAppearances = result[0]["COUNT(Password)"];
+            console.log('Num password appearances = ' + numAppearances);
+            resolve(numAppearances);
+        });
+    });
+    
+}
+
+
+/**
+ * Check if the password correctly corresponds to the username it was provided with.
+ * 
+ * @param {VARCHAR} username 
+ * @param {VARCHAR} password 
+ * @return doesMatch
+ */
+function passwordMatchesUsername(username, password) {
+    let passwordMatches = 'SELECT Password FROM users WHERE Username=?';
+
+    return new Promise((resolve, reject) => {
+        connection.query(passwordMatches, [username], (err, result) => {
+            if(err) reject(err);
+            let doesMatch = result[0]["Password"] === password;
+            console.log('Does match = ' + doesMatch);
+            resolve(doesMatch);
+        });
+    })
+}
+
+/**
+ * Validates that the user data is fit to log the user in
+ * @param {JSON} loginData 
+ * @returns isValid
+ */
+async function validateLogin(loginData) {
+    isValid = false;
+
+    // check:
+    // 1. The provided username exists in the database
+    // 2. The provided password exists in the database
+    // 3. The provided password corresponds to the provided username
+
+    try {
+        if (await numUsernameAppearances(loginData.username) === 1) {
+            if (await numPasswordAppearances(loginData.password) === 1) {
+                if (await passwordMatchesUsername(loginData.username, loginData.password)) {
+                    isValid = true;
+                }
+            }
+        }
+
+        return isValid;
+    }
+    catch (err) {
+        console.log('Validate login error:', err.message);
+    }
+}
 
 /**
  * Generates a random account number with a given length
  * 
- * I am not good at coming up with these kind of algorithms so I got it from this website
+ * I am not good at coming up with these kind of algorithms so I got this one from this website
  * https://singhak.in/create-n-length-random-number-in-javascript/
  * 
  * @param {int} length the length of the users account number
@@ -27,8 +117,6 @@ function validateNewUser(registerData) {
     let username = registerData.username;
     let password = registerData.password;
     let password_conf = registerData.password_conf;
-
-    console.log('Username in validateNewUser: ' + username);
 
     // check the database to see if the username is already taken
     let usernameExists = 'SELECT COUNT(Username) FROM users WHERE Username=?';
@@ -87,9 +175,17 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/', (req, res) => {
+router.post('/login', (req, res) => {
+    loginData = req.body;
+    console.log(loginData);
+    if (validateLogin(loginData)) {
+        console.log('Login data is a valid user');
+    }
+});
+
+
+router.post('/register', (req, res) => {
     registerData = req.body;
-    console.log('Calling register form from login.js!');
     console.log(registerData);
     validateNewUser(registerData);
     console.log('User data is valid');

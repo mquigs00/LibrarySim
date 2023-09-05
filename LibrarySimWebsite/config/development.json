@@ -1,3 +1,8 @@
 {
-    
+    "name": "LibrarySim - Development",
+    "db_info": {
+        "host": "localhost",
+        "user": "root",
+        "database": "LibrarySim"
+    }
 }

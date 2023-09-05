@@ -1,12 +1,7 @@
 var mysql = require('mysql');
 const config = require('config');
 
-//var connection = mysql.createConnection(config.get('db_info'));
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'LibrarySim'
-});
+var connection = mysql.createConnection(config.get('db_info'));
   
 connection.connect(function(err) {
     if (err) {

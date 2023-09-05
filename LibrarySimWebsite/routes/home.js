@@ -8,12 +8,11 @@ router.get('/', (req, res) => {
     res.sendFile(path.resolve('public/html/home-page.html'));
 });
 
-
-router.get('/', (req, res) => {
+router.get('/header.html', (req, res) => {
     res.sendFile(path.resolve('public/html/header.html'));
 });
 
-router.get('/', (req, res) => {
+router.get('/footer.html', (req, res) => {
     res.sendFile(path.resolve('public/html/footer.html'));
 });
 
