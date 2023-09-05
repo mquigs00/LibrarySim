@@ -4,12 +4,12 @@ const csvtojson = require('csvtojson');
 const express = require('express');
 
 const home = require('./routes/home');
+const login = require('./routes/login');
 const authors = require('./routes/authors');
-const publishers = require('./routes/authors');
-const subjects = require('./routes/authors');
-const books = require('./routes/authors');
-const users = require('./routes/authors');
-
+const publishers = require('./routes/publishers');
+const subjects = require('./routes/subjects');
+const books = require('./routes/books');
+const users = require('./routes/users');
 
 const app = express();
 const port = 3000;
@@ -19,6 +19,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', home);
+app.use('/login', login);
 app.use('/authors', authors);
 app.use('/publishers', publishers);
 app.use('/subjects', subjects);
@@ -48,18 +49,18 @@ app.get('/createdb', (req, res) => {
   });
 });
 
-
+/*
 app.get('/login', (req, res) => {
-  res.sendFile('public/html/login.html', {root: __dirname});
+  console.log('Calling sendFile');
+  res.sendFile(path.resolve('public/html/login.html'));
 });
 
-app.post('/register', (req, res) => {
+app.post('/registerform', (req, res) => {
   registerData = req.body;
-  console.log(registerData['first_name']);
-
-
+  console.log(registerData);
+  //validateNewUser(registerData);
 });
-
+*/
 
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`);
