@@ -5,6 +5,7 @@ if(process.env.NODE_ENV !== 'production') {
 const path = require('path');
 const bcrypt = require('bcrypt');
 const connection = require('./database');
+const methodOverride = require('method-override');
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
@@ -39,6 +40,7 @@ initializePassport(
     }
 );
 
+router.use(methodOverride('_method'));
 router.use(flash());
 router.use(session({
     secret: process.env.SESSION_SECRET,
@@ -49,22 +51,21 @@ router.use(session({
 router.use(passport.initialize());
 router.use(passport.session());
 
-/*
-async function getUserByUsername(username) {
-    console.log('In getUserByUsername');
-    let selectUser = 'SELECT * FROM users WHERE Username=?';
-
-    return new Promise((resolve, reject) => {
-        connection.query(selectUser, [username], (err, result) => {
-            if(err) reject(err);
-            let user = result;
-            console.log('Hello');
-            console.log(user);
-            resolve(user);
-        });
-    });
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/login');
+    }
 }
-*/
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect('../myaccount')
+    } else {
+        next();
+    }
+}
 
 /**
  * Check how many instances of the given username appear in the users database
@@ -105,56 +106,6 @@ function numPasswordAppearances(password) {
     });
 }
 
-
-/**
- * Check if the password correctly corresponds to the username it was provided with.
- * 
- * @param {VARCHAR} username 
- * @param {VARCHAR} password 
- * @return doesMatch
- */
-function passwordMatchesUsername(username, password) {
-    let passwordMatches = 'SELECT Password FROM users WHERE Username=?';
-
-    return new Promise((resolve, reject) => {
-        connection.query(passwordMatches, [username], (err, result) => {
-            if(err) reject(err);
-            let doesMatch = result[0]["Password"] === password;
-            console.log('Does match = ' + doesMatch);
-            resolve(doesMatch);
-        });
-    })
-}
-
-/**
- * Validates that the user data is fit to log the user in
- * @param {JSON} loginData 
- * @returns isValid
- */
-async function validateLogin(loginData) {
-    isValid = false;
-
-    // check:
-    // 1. The provided username exists in the database
-    // 2. The provided password exists in the database
-    // 3. The provided password corresponds to the provided username
-
-    try {
-        if (await numUsernameAppearances(loginData.username) === 1) {
-            if (await numPasswordAppearances(loginData.password) === 1) {
-                if (await passwordMatchesUsername(loginData.username, loginData.password)) {
-                    isValid = true;
-                }
-            }
-        }
-
-        return isValid;
-    }
-    catch (err) {
-        console.log('Validate login error:', err.message);
-    }
-}
-
 /**
  * Generates a random account number with a given length
  * 
@@ -188,8 +139,6 @@ async function validateNewUser(registerData) {
     } catch(err) {
         console.log('Validate new user error:', err.message);
     }
-    // if the r
-    
 
     /*
     if (await numPasswordAppearances(encryptedPassword) === 0) {
@@ -222,7 +171,7 @@ function registerUser(registerData, encryptedPassword) {
 }
 
 
-router.get('/', (req, res) => {
+router.get('/', checkNotAuthenticated, (req, res) => {
     res.sendFile(path.resolve('public/html/login.html'));
 });
 
@@ -232,25 +181,6 @@ router.post('/login', passport.authenticate('local', {
     failureRedirect: '/',
     failureFlash: true
 }))
-
-
-/*
-router.post('/login', async (req, res) => {
-    loginData = req.body;
-    console.log(loginData);
-    await getUserByUsername(loginData.username);
-});
-*/
-
-/*
-router.post('/login', (req, res) => {
-    loginData = req.body;
-    console.log(loginData);
-    if (validateLogin(loginData)) {
-        console.log('Login data is a valid user');
-    }
-});
-*/
 
 
 router.post('/register', async (req, res) => {
@@ -270,16 +200,12 @@ router.post('/register', async (req, res) => {
     }
 });
 
-
-/*
-router.post('/register', async (req, res) => {
-    registerData = req.body;
-    console.log(registerData);
-    validateNewUser(registerData);
-    console.log('User data is valid');
-    registerUser(registerData);
-});
-*/
+router.delete('/logout', (req, res) => {
+    req.logOut(function(err) {
+        if (err) return err;
+        res.redirect('/login');
+    });
+})
 
   
 module.exports = router;
