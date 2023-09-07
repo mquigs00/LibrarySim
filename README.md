@@ -6,5 +6,7 @@ After graduating, I decided to keep myself occupied and learning by taking more 
 
 Update 8/25/23: As I am almost done setting up the user-interface for the home page along with the basic skeleton of the other web pages, I 've decided to start learning some backend technologies. I just purchased The Complete Node.js Course from codewithmosh.com and will be using Node.js, Express, and MongoDB for the backend of my application. I'm excited to be working towards the ability to register users, log in, and search for books from the database.
 
+Update 9/5/23: Although I wanted to follow along to the course and implement a MongoDB database, I decided that a relational MySQL database made more sense for a library database. Therefore, I am now using MySQL to work with a phpMyAdmin database for all of the project data.
+
 Credits:
 The carousel feature on the homepage was heavily based off of code from this follow along by Kevin Powell: https://www.youtube.com/watch?v=VYsVOamdB0g&t=1182s

@@ -1,8 +1,70 @@
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const path = require('path');
-const connection = require('./database')
+const bcrypt = require('bcrypt');
+const connection = require('./database');
 const express = require('express');
-const { log } = require('console');
 const router = express.Router();
+const passport = require('passport');
+const flash = require('express-flash');
+const session = require('express-session');
+const initializePassport = require('../passport-config');
+initializePassport(
+    passport,
+    async username => {
+        let selectUser = 'SELECT * FROM users WHERE Username=?';
+
+        return new Promise((resolve, reject) => {
+            connection.query(selectUser, [username], (err, result) => {
+                if(err) reject(err);
+                let user = result[0];
+                console.log(user);
+                resolve(user);
+            });
+        })
+    },
+    async id => {
+        let select = 'SELECT * FROM users WHERE ID=?';
+
+        return new Promise((resolve, reject) => {
+            connection.query(select, [id], (err, result) => {
+                if(err) reject(err);
+                let user = result[0];
+                console.log(user);
+                resolve(user);
+            });
+        });
+    }
+);
+
+router.use(flash());
+router.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
+
+router.use(passport.initialize());
+router.use(passport.session());
+
+/*
+async function getUserByUsername(username) {
+    console.log('In getUserByUsername');
+    let selectUser = 'SELECT * FROM users WHERE Username=?';
+
+    return new Promise((resolve, reject) => {
+        connection.query(selectUser, [username], (err, result) => {
+            if(err) reject(err);
+            let user = result;
+            console.log('Hello');
+            console.log(user);
+            resolve(user);
+        });
+    });
+}
+*/
 
 /**
  * Check how many instances of the given username appear in the users database
@@ -23,6 +85,7 @@ function numUsernameAppearances(username) {
     });
 }
 
+
 /**
  * Check how many instances of the given password appear in the user database
  * 
@@ -40,7 +103,6 @@ function numPasswordAppearances(password) {
             resolve(numAppearances);
         });
     });
-    
 }
 
 
@@ -112,36 +174,28 @@ function generateAccountNum(length) {
  * @param {JSON} registerData - a JSON with all of the user attributes to be loaded
  * @returns isValid - whether or not the username and passwords are valid
  */
-function validateNewUser(registerData) {
-    let isValid = true;
-    let username = registerData.username;
-    let password = registerData.password;
-    let password_conf = registerData.password_conf;
+async function validateNewUser(registerData) {
+    let isValid = false;
 
-    // check the database to see if the username is already taken
-    let usernameExists = 'SELECT COUNT(Username) FROM users WHERE Username=?';
-    connection.query(usernameExists, [username], (err, result) => {
-        if(err) throw err;
-        if (result[0]["COUNT(Username)"] > 0) {
-            console.log('Username already taken!');
-            isValid = false;
-        };
-    });
-
-    // check the database to see if the password is already taken
-    let passwordExists = 'SELECT COUNT(Password) FROM users WHERE Password=?';
-    connection.query(passwordExists, [password], (err, result) => {
-        if(err) throw err;
-        if (result[0]["COUNT(Password)"] > 0) {
-            console.log('Password already taken!');
-            isValid = false;
-        };
-    });
-
-    if (password != password_conf) {
-        console.log('Passwords must match!')
-        isValid = false;
+    try {
+        if (await numUsernameAppearances(registerData.username) === 0) {
+            console.log('Username not taken');
+            if (registerData.password == registerData.password_conf) {
+                console.log('Passwords match!');
+                isValid = true;
+            }
+        }
+    } catch(err) {
+        console.log('Validate new user error:', err.message);
     }
+    // if the r
+    
+
+    /*
+    if (await numPasswordAppearances(encryptedPassword) === 0) {
+        console.log('Password not taken');
+    }
+    */
 
     return isValid;
 }
@@ -151,16 +205,14 @@ function validateNewUser(registerData) {
  * 
  * @param {JSON} registerData - the validated data entered by the user for registration
  */
-function registerUser(registerData) {
+function registerUser(registerData, encryptedPassword) {
     let accountNum = generateAccountNum(14);
 
-    // create sql statement
     let insertStatement = 
     `INSERT INTO users (AccountNum, Username, Password, FirstName, LastName, DOB, Address, City, State, Zipcode) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
-    console.log('Username in registerUser: ' + registerData.username);
-    // order out variables with the sql values
-    var items = [accountNum, registerData.username, registerData.password, registerData.first_name, registerData.last_name, registerData.birthday, registerData.address, registerData.city, registerData.state, registerData.zipcode];
+    //console.log('Username in registerUser: ' + registerData.username);
+    var items = [accountNum, registerData.username, encryptedPassword, registerData.first_name, registerData.last_name, registerData.birthday, registerData.address, registerData.city, registerData.state, registerData.zipcode];
 
     connection.query(insertStatement, items, (err, results, fields) => {
         if (err) {
@@ -175,6 +227,22 @@ router.get('/', (req, res) => {
 });
 
 
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '../myaccount',
+    failureRedirect: '/',
+    failureFlash: true
+}))
+
+
+/*
+router.post('/login', async (req, res) => {
+    loginData = req.body;
+    console.log(loginData);
+    await getUserByUsername(loginData.username);
+});
+*/
+
+/*
 router.post('/login', (req, res) => {
     loginData = req.body;
     console.log(loginData);
@@ -182,15 +250,36 @@ router.post('/login', (req, res) => {
         console.log('Login data is a valid user');
     }
 });
+*/
 
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
+    try {
+        registerData = req.body;
+        const hashPassword = await bcrypt.hash(registerData.password, 10);     // encrypt the given password
+        console.log('Hashed password:', hashPassword);
+        if (await validateNewUser(registerData)) {
+            console.log('user is valid');
+            registerUser(registerData, hashPassword);
+            console.log('User registered');
+        } else {
+            console.log('Invalid register credentials');
+        }
+    } catch(err) {
+        console.log('Register api error:', err.message);
+    }
+});
+
+
+/*
+router.post('/register', async (req, res) => {
     registerData = req.body;
     console.log(registerData);
     validateNewUser(registerData);
     console.log('User data is valid');
     registerUser(registerData);
 });
+*/
 
   
 module.exports = router;

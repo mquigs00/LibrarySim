@@ -8,6 +8,7 @@ const publishers = require('./routes/publishers');
 const subjects = require('./routes/subjects');
 const books = require('./routes/books');
 const users = require('./routes/users');
+const myaccount = require('./routes/myaccount');
 
 const app = express();
 const port = 3000;
@@ -23,6 +24,7 @@ app.use('/publishers', publishers);
 app.use('/subjects', subjects);
 app.use('/books', books);
 app.use('/users', users);
+app.use('/myaccount', myaccount);
 
 
 app.listen(port, () => {
