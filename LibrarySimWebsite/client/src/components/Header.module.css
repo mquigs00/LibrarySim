@@ -1,0 +1,61 @@
+html {
+    font-size: 62.5%;
+}
+
+.top_contact_bar {
+    background-color: darkgreen;
+    height: 4rem;
+}
+
+.top_contact_bar_text {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    top: 50%;
+    transform: translate(0, 50%);
+}
+
+.logo {
+    height: 8rem;
+    border-radius: 1rem;
+    margin-left: 20rem;
+}
+
+.header_login_section {
+    display: flex;
+    font-size: 1.5rem;
+    height: 8rem;
+}
+
+.header_login_label {
+    clear: left;
+    display: inline-block;
+    margin-left: 5rem;
+    margin-right: 0.2rem;
+    width: 7rem;
+}
+
+.header_login_bars {
+    display: flex;
+    float: right;
+    height: 3rem;
+    left: 40rem;
+    position: relative;
+    transform: translate(0, 90%);
+}
+
+input {
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.navigation_bar {
+    background-color: black;
+    color: white;
+    height: 5rem;
+}

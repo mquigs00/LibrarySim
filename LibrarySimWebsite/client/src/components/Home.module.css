@@ -1,0 +1,32 @@
+.home {
+    height: 85rem;
+}
+
+.library_intro_text {
+    left: 20rem;
+    position: relative;
+    top: 4rem;
+    width: 70rem;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+.home_search_catalog {
+    background-color: #D2CFCF;
+    bottom: 20rem;
+    color: black;
+    float: right;
+    font-size: 2.4rem;
+    height: 25rem;
+    margin-right: 18rem;
+    margin-top: 0rem;
+    position: relative;
+    text-align: center;
+    width: 43rem;
+}

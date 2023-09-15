@@ -1,0 +1,42 @@
+.footer {
+    background-color: #C5A06A;
+    color: white;
+    height: 28rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    left: 25rem;
+    position: relative;
+}
+
+.footer_box {
+    height: 28rem;
+    text-align: center;
+    width: 33.33%;
+}
+
+.footer_text_box {
+    font-size: 2.4rem;
+}
+
+.footer_email_signup {
+    font-size: 2rem;
+}
+
+.hours_list {
+    font-size: 2rem;
+    list-style-type: none;
+    text-align: center;
+}
+
+p {
+    font-size: 1.6rem;
+}
+
+h1 {
+    font-size: 3.6rem;
+}
